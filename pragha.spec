@@ -1,5 +1,5 @@
 Name:           pragha
-Version:        0.8.0
+Version:        0.8.0.1
 Release:        1%{?dist}
 Summary:        Lightweight GTK+ music manager
 
@@ -7,6 +7,7 @@ Group:          Applications/Multimedia
 License:        GPLv3+
 URL:            http://pragha.wikispaces.com/
 Source0:        http://dissonance.googlecode.com/files/%{name}-%{version}.tar.bz2
+Patch0:         pragha-0.8.0.1-de.po.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel >= 1.0.15 
@@ -37,6 +38,7 @@ author.
 
 %prep
 %setup -q
+%patch0 -p1 -b .old
 # Fix spurious executable permissions
 chmod 0644 ChangeLog src/*.{c,h}
 
@@ -47,10 +49,11 @@ make %{?_smp_mflags} V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT INSTALL='install -p'
 desktop-file-install                                       \
   --delete-original                                        \
-  --remove-category=Application                            \
+  --remove-category=AudioVideo                             \
+  --add-category=Audio                                     \
   --dir=${RPM_BUILD_ROOT}%{_datadir}/applications          \
   ${RPM_BUILD_ROOT}%{_datadir}/applications/%{name}.desktop
 %find_lang %{name}
@@ -81,7 +84,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 # FIXME add AUTHORS and README if not empty
-%doc ChangeLog FAQ
+%doc ChangeLog COPYING FAQ NEWS
 %{_bindir}/pragha
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*x*/apps/%{name}.png
@@ -91,6 +94,10 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Fri Jul 30 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.0.1-1
+- Update to 0.8.0.1
+- Add COPYING and NEWS to docs
+
 * Thu Jul 29 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.0-1
 - Update to 0.8.0
 
