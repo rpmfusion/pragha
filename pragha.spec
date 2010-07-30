@@ -1,5 +1,5 @@
 Name:           pragha
-Version:        0.8.0.1
+Version:        0.8.0.2
 Release:        1%{?dist}
 Summary:        Lightweight GTK+ music manager
 
@@ -7,7 +7,6 @@ Group:          Applications/Multimedia
 License:        GPLv3+
 URL:            http://pragha.wikispaces.com/
 Source0:        http://dissonance.googlecode.com/files/%{name}-%{version}.tar.bz2
-Patch0:         pragha-0.8.0.1-de.po.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel >= 1.0.15 
@@ -30,15 +29,14 @@ BuildRequires:  gettext
 
 %description
 Pragha is is a lightweight GTK+ music manager that aims to be fast, bloat-free,
-and light on memory consumption. It is written completely in C and GTK+.
+and light on memory consumption. It is written completely in C and GTK+. 
 
-This it is a fork of Consonance Music Manager, discontinued by the original 
+Pragha is a fork of Consonance Music Manager, discontinued by the original 
 author.
 
 
 %prep
 %setup -q
-%patch0 -p1 -b .old
 # Fix spurious executable permissions
 chmod 0644 ChangeLog src/*.{c,h}
 
@@ -94,6 +92,10 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Fri Jul 30 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.0.2-1
+- Update to 0.8.0.2
+- Drop de.po patch, included upstream
+
 * Fri Jul 30 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.0.1-1
 - Update to 0.8.0.1
 - Add COPYING and NEWS to docs
