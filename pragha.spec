@@ -1,6 +1,6 @@
 Name:           pragha
 Version:        0.8.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Lightweight GTK+ music manager
 
 Group:          Applications/Multimedia
@@ -50,7 +50,6 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL='install -p'
 desktop-file-install                                       \
   --delete-original                                        \
-  --remove-category=AudioVideo                             \
   --add-category=Audio                                     \
   --dir=${RPM_BUILD_ROOT}%{_datadir}/applications          \
   ${RPM_BUILD_ROOT}%{_datadir}/applications/%{name}.desktop
@@ -92,6 +91,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Mon Aug 02 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.0.2-2
+- Fix desktop file
+
 * Fri Jul 30 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.0.2-1
 - Update to 0.8.0.2
 - Drop de.po patch, included upstream
