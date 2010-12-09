@@ -39,7 +39,7 @@ author.
 %prep
 %setup -q
 %if 0%{?fedora} >= 15
-%patch1 -p1 -b .libnotify-0.7.0
+%patch0 -p1 -b .libnotify-0.7.0
 %endif
 # Fix spurious executable permissions
 chmod 0644 ChangeLog src/*.{c,h}
