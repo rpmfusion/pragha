@@ -1,0 +1,18 @@
+--- pragha-0.8.4.orig/src/statusicon.c	2010-11-24 15:49:26.000000000 +0100
++++ pragha-0.8.4/src/statusicon.c	2010-12-09 11:39:08.903924624 +0100
+@@ -153,14 +153,7 @@
+ 			length);
+ 
+ 	/* Create notification instance */
+-	if(cwin->cpref->osd_in_systray && gtk_status_icon_is_embedded(GTK_STATUS_ICON(cwin->status_icon))) {
+-		osd = notify_notification_new_with_status_icon((const gchar *) summary,
+-								body, NULL,
+-								GTK_STATUS_ICON(cwin->status_icon));
+-	}
+-	else {
+-		osd = notify_notification_new((const gchar *) summary, body, NULL, NULL);
+-	}
++	osd = notify_notification_new((const gchar *) summary, body, NULL);
+ 
+ 	notify_notification_set_timeout(osd, OSD_TIMEOUT);
+ 
