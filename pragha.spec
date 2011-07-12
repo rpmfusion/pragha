@@ -1,6 +1,6 @@
 Name:           pragha
 Version:        0.8.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Lightweight GTK+ music manager
 
 Group:          Applications/Multimedia
@@ -13,6 +13,7 @@ BuildRequires:  alsa-lib-devel >= 1.0.15
 BuildRequires:  dbus-glib-devel >= 0.74
 BuildRequires:  gtk2-devel >= 2.16.0
 BuildRequires:  flac-devel >= 1.2.1
+BuildRequires:  keybinder-devel >= 0.2.0
 BuildRequires:  libao-devel >= 0.8.8
 BuildRequires:  libcddb-devel >= 1.2.1
 BuildRequires:  libcdio-devel >= 0.78
@@ -91,6 +92,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Tue Jul 12 2011 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.8-2
+- Build with keybinder support
+
 * Tue Jul 12 2011 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.8-1
 - Update to 0.8.8
 
