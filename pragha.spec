@@ -1,5 +1,5 @@
 Name:           pragha
-Version:        0.8.4
+Version:        0.8.8
 Release:        1%{?dist}
 Summary:        Lightweight GTK+ music manager
 
@@ -7,7 +7,6 @@ Group:          Applications/Multimedia
 License:        GPLv3+
 URL:            http://pragha.wikispaces.com/
 Source0:        http://dissonance.googlecode.com/files/%{name}-%{version}.tar.bz2
-Patch0:         pragha-0.8.4-libnotify-0.7.0.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel >= 1.0.15 
@@ -38,9 +37,6 @@ author.
 
 %prep
 %setup -q
-%if 0%{?fedora} >= 15
-%patch0 -p1 -b .libnotify-0.7.0
-%endif
 # Fix spurious executable permissions
 chmod 0644 ChangeLog src/*.{c,h}
 
@@ -95,9 +91,15 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Tue Jul 12 2011 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.8-1
+- Update to 0.8.8
+
+* Thu Mar 17 2011 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.6-1
+- Update to 0.8.6
+- Drop libnotify-patch, no longer required
+
 * Thu Dec 09 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.4-1
 - Update to 0.8.4
-- Add patch for libnotify 0.7.0
 
 * Sun Oct 03 2010 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.2-1
 - Update to 0.8.2
