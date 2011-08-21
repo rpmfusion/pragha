@@ -1,0 +1,2 @@
+Pragha was rewritten to use gstreamer, thus it can be included in Fedora.
+This change happened in Fedora >= 16.
