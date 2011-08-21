@@ -1,0 +1,36 @@
+diff -dur pragha-0.8.9.orig/configure pragha-0.8.9/configure
+--- pragha-0.8.9.orig/configure	2011-08-19 00:07:20.000000000 +0200
++++ pragha-0.8.9/configure	2011-08-22 01:23:35.818941537 +0200
+@@ -2872,13 +2872,13 @@
+ 	   yes)	debug=true ;
+ 		CFLAGS="$CFLAGS -DDEBUG -D_DEBUG -g -ggdb -O0 -fno-inline -fno-inline-functions" ;;
+ 	    no)	debug=false ;
+-		CFLAGS="$CFLAGS -DNDEBUG -O3 -Werror" ;;
++		CFLAGS="$CFLAGS -DNDEBUG -Werror" ;;
+ 	     *)	as_fn_error $? "bad value ${enableval} for --enable-debug" "$LINENO" 5 ;;
+ 	esac
+ 
+ else
+   	debug=false
+-	CFLAGS="$CFLAGS -DNDEBUG -O3 -Werror"
++	CFLAGS="$CFLAGS -DNDEBUG -Werror"
+ 
+ fi
+ 
+diff -dur pragha-0.8.9.orig/configure.ac pragha-0.8.9/configure.ac
+--- pragha-0.8.9.orig/configure.ac	2011-08-17 19:45:55.000000000 +0200
++++ pragha-0.8.9/configure.ac	2011-08-22 01:23:20.750849765 +0200
+@@ -30,11 +30,11 @@
+ 	   yes)	debug=true ;
+ 		CFLAGS="$CFLAGS -DDEBUG -D_DEBUG -g -ggdb -O0 -fno-inline -fno-inline-functions" ;;
+ 	    no)	debug=false ;
+-		CFLAGS="$CFLAGS -DNDEBUG -O3 -Werror" ;;
++		CFLAGS="$CFLAGS -DNDEBUG -Werror" ;;
+ 	     *)	AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
+ 	esac
+ ],[	debug=false
+-	CFLAGS="$CFLAGS -DNDEBUG -O3 -Werror"
++	CFLAGS="$CFLAGS -DNDEBUG -Werror"
+ ])
+ AC_SUBST(CFLAGS)
+ 
