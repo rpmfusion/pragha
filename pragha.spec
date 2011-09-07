@@ -1,5 +1,5 @@
 Name:           pragha
-Version:        0.8.9
+Version:        0.8.10
 Release:        1%{?dist}
 Summary:        Lightweight GTK+ music manager
 
@@ -94,6 +94,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Wed Sep 07 2011 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.10-1
+- Update to 0.8.10
+
 * Mon Aug 22 2011 Christoph Wickert <cwickert@fedoraproject.org> - 0.8.9-1
 - Update to 0.8.9
 - Don't compile with -O3
